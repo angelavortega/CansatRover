@@ -9,3 +9,7 @@ class roverLaunch():
     def checkLaunch(self):
         "This function checks if the launch has started"
         pass
+
+    def checkParashut(self):
+        "This function checks if the parashut is working well"
+        pass
