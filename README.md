@@ -1,12 +1,12 @@
 # CansatRover
 ----
-The project is created for the initial purpose of entering a tournament named CanSat Competition. With this code we will be controlling a rocket that will launch a can filled with a little rover, after a certain altitude a parachute will be displayed, in the air it will try to fall intothe launching position and if it doesn't land in the launching position, it will return to the launching position with a pair of motors.
+The project is created for the initial purpose of entering a tournament named CanSat Competition. With this code we will be controlling a rocket that will launch a can filled with a little rover, after a certain altitude a parachute will be displayed, in the air it will try to fall intothe launching position and if it doesn't land in the launching position, it will return to the launching position with a pair of motors. This specific repository will be runed in the controller (Rashberry PI) wth the task of managing all the stages of the Rover.
 
 ## QUICK START
 ---
 1. The initial step for working with the repository is to have a 3.6 or further Python version installed.
-2. The code should be developed and run by a virtual enviroment created with the above mentioned python version, to know the steps on how to set up the virtual env follow the instructions on **Tutorials/virtual_env**
-2. A requirements.txt will be included in order to download all the necessary libraries for succesfully running the code. To install the required libraries follow the instructions on **Tutorials/requirements.txt**
+2. AVOID THIS STEP IF YOU ARE USING THIS CODE ON THE CONTROLLER. The code should be developed and run by a virtual enviroment created with the above mentioned python version, to know the steps on how to set up the virtual env follow the instructions on **Tutorials/virtual_env**.
+3. A requirements.txt will be included in order to download all the necessary libraries for succesfully running the code. To install the required libraries follow the instructions on **Tutorials/requirements.txt**
 
 ## Tutorials
 
