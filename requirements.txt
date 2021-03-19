@@ -1,5 +1,13 @@
 flake8==3.8.4
+future==0.18.2
+iso8601==0.1.14
 mccabe==0.6.1
 numpy==1.20.1
 pycodestyle==2.6.0
 pyflakes==2.2.0
+PyYAML==5.4.1
+rpi==0.0.1
+RPi.GPIO==0.7.0
+serial==0.0.97
+smbus==1.1.post2
+spidev==3.5
