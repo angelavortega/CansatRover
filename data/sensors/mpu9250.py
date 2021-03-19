@@ -1,7 +1,8 @@
-
-from lib_mpu9250 import *
+from data.sensors.lib_mpu9250 import *
 
 time.sleep(1) # delay necessary to allow mpu9250 to settle
+
+"""
 
 print('recording data')
 while 1:
@@ -17,3 +18,5 @@ while 1:
     print('mag [uT]:   x = {0:2.2f}, y = {1:2.2f}, z = {2:2.2f}'.format(mx,my,mz))
     print('{}'.format('-'*30))
     time.sleep(1)
+
+"""    

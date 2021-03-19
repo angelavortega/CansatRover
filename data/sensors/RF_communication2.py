@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-from lib_nrf24 import NRF24
+from data.sensors.lib_nrf24 import NRF24
 import time
 import spidev
 
@@ -20,11 +20,14 @@ radio.enableAckPayload()
 
 radio.openWritingPipe(pipes[0])
 radio.printDetails()
-   
+
+"""
+
 while True:
     message = list(input('Ingrese su mensaje'))
     while len(message) < 32:
         message.append(0)
     print(message) 
     radio.write(message) 
-    
+
+"""    
