@@ -23,7 +23,7 @@ class roverData():
             position = self.gpsSerial.readline()
             self.lastPosition = position
             return position.decode()
-        return self.lastPosition
+        return self.lastPosition.decode()
 
     def acelData(self):
         flag = True
