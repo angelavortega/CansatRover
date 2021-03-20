@@ -21,9 +21,11 @@ class roverData():
     def gpsPosition (self):
         if(self.gpsSerial.in_waiting):
             position = self.gpsSerial.readline()
+            position = position.decode()
+            
             self.lastPosition = position
-            return position.decode()
-        return self.lastPosition.decode()
+            return position
+        return self.lastPosition
 
     def acelData(self):
         flag = True
