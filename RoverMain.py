@@ -19,7 +19,7 @@ class roverMain():
         self.allData.append(self.roverData.climateData())
         self.allData.append(self.roverData.gpsPosition())
         self.allData.append(self.roverData.acelData())
-        return allData
+        return self.allData
 
     def sendMessage(self):
         return self.roverData.climateData(self.allData)

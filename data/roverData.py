@@ -1,15 +1,14 @@
 import serial, time # For GPS
 from data.sensors.lib_bme280 import * # Temperature, Humidity and Pressure
 from data.sensors.lib_mpu9250 import * # Acelerometer
-from data.sensors.RF_communication2 import radio # Radio 
+from data.sensors.RF_communication2 import * # Radio 
 
 
 class roverData():
     
     def __init__(self):
         self.gpsSerial = serial.Serial('/dev/ttyS0', baudrate=9600, timeout=1)
-        self.radio = radio()
-
+        
     def climateData(self):
         """
         (chip_id, chip_version) = readBME280ID()
@@ -40,6 +39,6 @@ class roverData():
     def sendRadioData(self, message):
         while len(message) < 32:
             message.append(0)
-        self.radio.write(message) 
+        radio.write(message) 
         return message
 
