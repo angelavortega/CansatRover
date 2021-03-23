@@ -1,5 +1,5 @@
 import time
-import pandas as pd
+import csv  
 from data.roverData import roverData
 from stages.launch import roverLaunch
 from stages.land import roverLand
@@ -9,9 +9,9 @@ from stages.returnR import roverReturn
 class roverMain():
     
     def __init__(self):
-        self.cities = pd.DataFrame(columns=['Time', "Temperature", "Pressure", "Humidity",  \
-            "GPS", "ax", "ay", "az", "wx", "wy", "wz", "mx", "my", "mz"])
-        self.cities.to_csv('data/data.csv', index=False)
+        with open('data/data.csv', 'w') as f:
+            f.write('Time,Temperature,Pressure,Humidity,\
+                GPS,ax,ay,az,wx,wy,wz,mx,my,mz')
         self.n = 0
         self.roverData = roverData()
         self.roverLaunch = roverLaunch(roverDataObj=self.roverData)
@@ -29,8 +29,9 @@ class roverMain():
         return self.allData
 
     def saveData(self, datos):
-        df = pd.DataFrame(datos).T
-        df.to_csv('data/data.csv', mode='a', header=False, index=False)
+        with open('data/data.csv', 'a') as f:
+            writer = csv.writer(f)
+            writer.writerow(datos)
 
     def sendMessage(self):
         return self.roverData.climateData(self.allData)
