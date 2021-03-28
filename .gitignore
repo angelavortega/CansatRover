@@ -2,5 +2,6 @@
 venv/*
 docs/*
 .vscode/*
+*.csv
 
 **/__pycache__/
