@@ -11,7 +11,7 @@ class roverMain():
     def __init__(self):
         with open('data/data.csv', 'w') as f:
             writer = csv.writer(f)
-            row = ['Time' ,'Temperature', 'Pressure', 'Humidity', 'Latitude' \
+            row = ['Time' ,'Temperature', 'Pressure', 'Humidity', 'Latitude', \
                 'Longitude','ax','ay','az','wx','wy','wz','mx','my','mz']
             writer.writerow(row)     
         self.n = 0
