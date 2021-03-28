@@ -35,7 +35,7 @@ class roverData():
         GPGGA_data_available = received_data.find(gpgga_info)   #check for NMEA GPGGA string                
         if (GPGGA_data_available>0):
             GPGGA_buffer = received_data.split('$GPGGA,',1)[1]  #store data coming after “$GPGGA,” string
-            NMEA_buff = (GPGGA_buffer.split(‘,’))
+            NMEA_buff = (GPGGA_buffer.split(','))
             nmea_latitude = []
             nmea_longitude = []
             nmea_latitude = NMEA_buff[1]                #extract latitude from GPGGA string
