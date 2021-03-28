@@ -32,22 +32,22 @@ class roverData():
             position = degrees + mm_mmmm
             return position        
         
-        received_data = (str)(self.gpsSerial.readline()) #read NMEA string received
-        GPGGA_data_available = received_data.find(gpgga_info)   #check for NMEA GPGGA string                
-        if (GPGGA_data_available>0):
-            GPGGA_buffer = received_data.split('$GPGGA,',1)[1]  #store data coming after “$GPGGA,” string
-            NMEA_buff = (GPGGA_buffer.split(','))
-            nmea_latitude = []
-            nmea_longitude = []
-            nmea_latitude = NMEA_buff[1]                #extract latitude from GPGGA string
-            nmea_longitude = NMEA_buff[3]               #extract longitude from GPGGA string
-            lat = (float)(nmea_latitude)
-            lat = convert_to_degrees(lat)
-            longi = (float)(nmea_longitude)
-            longi = convert_to_degrees(longi)
-            self.lastPosition = [lat, longi]
-            return [lat, longi]
-        return self.lastPosition
+        while True:
+            received_data = (str)(self.gpsSerial.readline()) #read NMEA string received
+            GPGGA_data_available = received_data.find(gpgga_info)   #check for NMEA GPGGA string                
+            if (GPGGA_data_available>0):
+                GPGGA_buffer = received_data.split('$GPGGA,',1)[1]  #store data coming after “$GPGGA,” string
+                NMEA_buff = (GPGGA_buffer.split(','))
+                nmea_latitude = []
+                nmea_longitude = []
+                nmea_latitude = NMEA_buff[1]                #extract latitude from GPGGA string
+                nmea_longitude = NMEA_buff[3]               #extract longitude from GPGGA string
+                lat = (float)(nmea_latitude)
+                lat = convert_to_degrees(lat)
+                longi = (float)(nmea_longitude)
+                longi = convert_to_degrees(longi)
+                self.lastPosition = [lat, longi]
+                return [lat, longi]
 
     def acelData(self):
         flag = True
