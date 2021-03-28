@@ -8,6 +8,7 @@ class roverData():
     
     def __init__(self):
         self.gpsSerial = serial.Serial('/dev/ttyS0', baudrate=9600, timeout=1)
+        self.lastPosition = [0, 0]
         
     def climateData(self):
         """
