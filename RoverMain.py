@@ -10,8 +10,10 @@ class roverMain():
     
     def __init__(self):
         with open('data/data.csv', 'w') as f:
-            f.write('Time,Temperature,Pressure,Humidity,\
-                GPS,ax,ay,az,wx,wy,wz,mx,my,mz')
+            writer = csv.writer(f)
+            row = ['Time' ,'Temperature', 'Pressure', 'Humidity', \
+                'GPS','ax','ay','az','wx','wy','wz','mx','my','mz']
+            writer.writerow(row)     
         self.n = 0
         self.roverData = roverData()
         self.roverLaunch = roverLaunch(roverDataObj=self.roverData)
