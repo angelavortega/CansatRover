@@ -11,8 +11,8 @@ class roverMain():
     def __init__(self):
         with open('data/data.csv', 'w') as f:
             writer = csv.writer(f)
-            row = ['Time' ,'Temperature', 'Pressure', 'Humidity', 'Latitude', \
-                'Longitude','ax','ay','az','wx','wy','wz','mx','my','mz']
+            row = ['Time' ,'Temperature', 'Pressure', 'Altitude', 'Humidity', \
+                'Latitude','Longitude','ax','ay','az','wx','wy','wz','mx','my','mz']
             writer.writerow(row)     
         self.n = 0
         self.roverData = roverData()
@@ -37,7 +37,7 @@ class roverMain():
             writer.writerow(datos)
 
     def sendMessage(self):
-        return self.roverData.climateData(self.allData)
+        return self.roverData.sendRadioData(self.allData)
 
 
 if __name__ == "__main__":
