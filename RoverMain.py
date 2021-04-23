@@ -11,8 +11,9 @@ class roverMain():
     def __init__(self):
         with open('data/data.csv', 'w') as f:
             writer = csv.writer(f)
-            row = ['Time' ,'Temperature', 'Pressure', 'Altitude', 'Humidity', \
-                'Latitude','Longitude','ax','ay','az','wx','wy','wz','mx','my','mz']
+            row = ['Time', 'Temperature', 'Pressure', 'Altitude', 'Humidity', \
+                    'X_Cordinate', 'Y_Cordinate', 'ax', 'ay', 'az', 'wx', 'wy',\
+                    'wz', 'mx', 'my', 'mz']
             writer.writerow(row)     
         self.n = 0
         self.roverData = roverData()
@@ -22,13 +23,13 @@ class roverMain():
 
     def gatherData(self):
         self.allData = [self.n]
-        self.n += 1
         for value in self.roverData.climateData():
             self.allData.append(value)
         for value in self.roverData.gpsPosition():
             self.allData.append(value)
         for value in self.roverData.acelData():
             self.allData.append(value)
+        self.n += 1
         return self.allData
 
     def saveData(self, datos):
