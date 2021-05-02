@@ -19,9 +19,10 @@ class roverData():
         print ("Version     :", chip_version)
         """
         temperature, pressure, altitude = self.bmp388.get_temperature_and_pressure_and_altitude()
-        altitude = self.calcAltitude(altitude)
+        pressure = pressure/100
+        altitude = self.calcAltitude(pressure)
         return [temperature, pressure, altitude]
-    """
+    
     def calcAltitude(self, pressure):
         if self.initial: 
             self.intlPressure = pressure
@@ -39,6 +40,7 @@ class roverData():
         else:
             altitude = altitude - self.intlAltitude
             return round(altitude, 1)
+    """
 
     def gpsPosition(self):
 
