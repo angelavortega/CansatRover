@@ -55,7 +55,7 @@ class roverData():
         
         def convert_to_m(latitude, longitude):
             y = latitude * 111319.4
-            x = longitud * math.cos(math.radians(longitude)) * 111319.4
+            x = longitude * math.cos(math.radians(latitude)) * 111319.4
             return x, y
 
         while True:
