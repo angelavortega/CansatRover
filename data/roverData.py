@@ -10,6 +10,8 @@ class roverData():
     def __init__(self):
         self.gpsSerial = serial.Serial('/dev/ttyS0', baudrate=9600, timeout=1)
         self.bmp388 = BMP388()
+        self.airDensity = 1.2041 # kg/m^3
+        self.gravity = 9.81 # m/s^2
         self.initial = True
         
     def climateData(self):
