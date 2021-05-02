@@ -79,13 +79,7 @@ class roverData():
                 continue
 
     def acelData(self):
-        flag = True
-        while flag:
-            try:
-                roll, pitch, yaw = accMagGyData()
-                flag = False
-            except:
-                continue
+        roll, pitch, yaw = accMagGyData()
         return [roll, pitch, yaw]
 
     def sendRadioData(self, message):
