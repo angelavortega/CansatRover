@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-from data.sensors.lib_nrf24 import NRF24
+from data.sensors.lib_nrf24 import *
 import time
 import spidev
 

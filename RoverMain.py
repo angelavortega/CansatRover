@@ -11,9 +11,8 @@ class roverMain():
     def __init__(self):
         with open('data/data.csv', 'w') as f:
             writer = csv.writer(f)
-            row = ['Time', 'Temperature', 'Pressure', 'Altitude', 'Humidity', \
-                    'X_Cordinate', 'Y_Cordinate', 'ax', 'ay', 'az', 'wx', 'wy',\
-                    'wz', 'mx', 'my', 'mz']
+            row = ['Time', 'Temperature', 'Pressure', 'Altitude', \
+                    'X_Cordinate', 'Y_Cordinate', 'Roll', 'Pitch', 'Yaw']
             writer.writerow(row)     
         self.n = 0
         self.roverData = roverData()
@@ -44,7 +43,7 @@ class roverMain():
 if __name__ == "__main__":
     roverMain = roverMain()
     while True:
-        time.sleep(1)
+        time.sleep(.04)
         datos = roverMain.gatherData()
         roverMain.saveData(datos)
         print(datos)
