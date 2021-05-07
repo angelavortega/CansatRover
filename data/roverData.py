@@ -13,6 +13,7 @@ class roverData():
         self.airDensity = 1.2041 # kg/m^3
         self.gravity = 9.81 # m/s^2
         self.initial = True
+        self.initial_pos = True
         
     def climateData(self):
         """
@@ -60,6 +61,13 @@ class roverData():
         def convert_to_m(latitude, longitude):
             y = latitude * 111319.4
             x = longitude * math.cos(math.radians(latitude)) * 111319.4
+            if self.initial_pos: 
+                self.in_x = x
+                self.in_y = y
+                self.initial_pos = False 
+                return 0, 0
+            x = x - self.in_x
+            y = y - self.in_y
             return x, y
 
         while True:
