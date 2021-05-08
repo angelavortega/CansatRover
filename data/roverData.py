@@ -101,7 +101,7 @@ class roverData():
         j = 0
         data_send = ['i']
         data_len = str(len(message))  
-        n_digits = len(data_len)
+        n_digits = str(len(data_len))
         data_send.append(n_digits)
         for l in data_len:
             data_send.append(l)  
