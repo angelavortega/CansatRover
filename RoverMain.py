@@ -48,5 +48,5 @@ if __name__ == "__main__":
         roverMain.saveData(datos)
         # Check if function sendMessage works 
         "Go to function sendMessage in roverData.py"
-        roverMain.sendMessage(datos)
+        roverMain.sendMessage()
         print(datos)
