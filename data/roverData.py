@@ -96,13 +96,28 @@ class roverData():
 
     def sendRadioData(self, data):
         Z, A, B, C, D, E, F, G, H = data
-        message = "{},{},{},{},{},{},{},{}".format(A, B, C, D, E, F, G, H)     
-        #data = data.encode()
-        # La siguiente seccion estaba en el codigo pero no creo que sea necesaria
-        """
-        while len(message) < 32:
-            message.append(0)
-        """
-        radio.write(message) 
+        message = "{};{};{};{};{};{};{};{}".format(A, B, C, D, E, F, G, H)     
+        i = 0
+        j = 0
+        data_send = []
+        data_len = str(len(message))  
+        n_digits = len(data_len)
+        data_send.append(n_digits)
+        for l in data_len:
+            data_send.append(l)  
+        limit = 32 - len(data_send)
+        for l in message:
+            if i < limit:
+                data_send.append(l)
+                if j == len(message)-1:
+                    radio.write(data_send)
+                    data_send = []
+            else:
+                limit = 33
+                radio.write(data_send)
+                data_send = []
+                i = 0
+            i += 1
+            j += 1
         return message
 
