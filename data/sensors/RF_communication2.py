@@ -10,9 +10,9 @@ radio = NRF24(GPIO, spidev.SpiDev())
 radio.begin(0,17)
 
 radio.setPayloadSize(32)
-radio.setChannel(0x81)
-radio.setDataRate(NRF24.BR_1MBPS)
-radio.setPALevel(NRF24.PA_MIN)
+radio.setChannel(0x77)
+radio.setDataRate(NRF24.BR_250KBPS)
+radio.setPALevel(NRF24.PA_MAX)
 
 radio.setAutoAck(True)
 radio.enableDynamicPayloads()
