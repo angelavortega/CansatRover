@@ -22,7 +22,7 @@ class roverData():
         print ("Version     :", chip_version)
         """
         temperature, pressure, altitude = self.bmp388.get_temperature_and_pressure_and_altitude()
-        pressure = pressure/100
+        pressure = pressure / 100
         altitude = self.calcAltitude(pressure)
         return [temperature, pressure, altitude]
     
@@ -59,8 +59,8 @@ class roverData():
             return position        
         
         def convert_to_m(latitude, longitude):
-            y = latitude * 111319.4
-            x = longitude * math.cos(math.radians(latitude)) * 111319.4
+            y = latitude * 111111.11
+            x = longitude * math.cos(math.radians(latitude)) * 111111.11
             if self.initial_pos: 
                 self.in_x = x
                 self.in_y = y
@@ -94,9 +94,15 @@ class roverData():
         roll, pitch, yaw = accMagGyData()
         return [roll, pitch, yaw]
 
-    def sendRadioData(self, message):
+    def sendRadioData(self, data):
+        Z, A, B, C, D, E, F, G, H = data
+        message = "{},{},{},{},{},{},{},{}".format(A, B, C, D, E, F, G, H)     
+        #data = data.encode()
+        # La siguiente seccion estaba en el codigo pero no creo que sea necesaria
+        """
         while len(message) < 32:
             message.append(0)
+        """
         radio.write(message) 
         return message
 
