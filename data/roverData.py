@@ -99,7 +99,7 @@ class roverData():
         message = "{};{};{};{};{};{};{};{}".format(A, B, C, D, E, F, G, H)     
         i = 0
         j = 0
-        data_send = []
+        data_send = ['i']
         data_len = str(len(message))  
         n_digits = len(data_len)
         data_send.append(n_digits)
