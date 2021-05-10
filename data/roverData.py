@@ -98,7 +98,7 @@ class roverData():
         Z, A, B, C, D, E, F, G, H = data
         #message = "{};{};{};{};{};{};{};{}".format(A, B, C, D, E, F, G, H)     
         
-        test = "A".format(A)
+        test = "{}".format(A)
 
         # i = 0
         # j = 0
