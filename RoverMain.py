@@ -6,6 +6,10 @@ from stages.land import roverLand
 from stages.returnR import roverReturn
 
 
+"""
+This is the where all the magic happens
+"""
+
 class roverMain():
     
     def __init__(self):
@@ -21,15 +25,24 @@ class roverMain():
         self.roverReturn = roverReturn(roverDataObj=self.roverData)
 
     def gatherData(self):
+        # Initialize new list
         self.allData = [self.n]
+
+        # Go to object class and gather all climate data and append to list 
         for value in self.roverData.climateData():
             self.allData.append(value)
+
+        # Go to object class and gather all gps data and append       
         for value in self.roverData.gpsPosition():
             self.allData.append(value)
+
+        # Go to object class aand gather acelorometer values and append
         for value in self.roverData.acelData():
             self.allData.append(value)
+    
         self.n += 1
-        return self.allData
+
+        return self.allData # list with data
 
     def saveData(self, datos):
         with open('data/data.csv', 'a') as f:
@@ -41,7 +54,11 @@ class roverMain():
 
 
 if __name__ == "__main__":
+
+    # Create new instance of our data gatherer
     roverMain = roverMain()
+
+
     while True:
         time.sleep(.25)
         datos = roverMain.gatherData()
@@ -49,4 +66,4 @@ if __name__ == "__main__":
         # Check if function sendMessage works 
         "Go to function sendMessage in roverData.py"
         roverMain.sendMessage()
-        print(datos)
+        print(datos[1], 'is type', type(datos[1]))
