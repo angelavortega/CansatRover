@@ -108,5 +108,4 @@ class roverData():
                 data_send.append(0)
             radio.write(data_send)
             i += 1
-        return message
 
