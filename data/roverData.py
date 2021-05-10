@@ -98,29 +98,31 @@ class roverData():
         #Z, A, B, C, D, E, F, G, H = data
         #message = "{};{};{};{};{};{};{};{}".format(A, B, C, D, E, F, G, H)     
         
-        """
-        i = 0
-        j = 0
-        data_send = ['i']
-        data_len = str(len(message))  
-        n_digits = str(len(data_len))
-        data_send.append(n_digits)
-        for l in data_len:
-            data_send.append(l)  
-        limit = 32 - len(data_send)
-        for l in message:
-            if i < limit:
-                data_send.append(l)
-                if j == len(message)-1:
-                    radio.write(data_send)
-                    data_send = []
-            else:
-                limit = 33
-                radio.write(data_send)
-                data_send = []
-                i = 0
-            i += 1
-            j += 1
-        """
+
+        # i = 0
+        # j = 0
+        # data_send = ['i']
+        # data_len = str(len(message))  
+        # n_digits = str(len(data_len))
+        # data_send.append(n_digits)
+        # for l in data_len:
+        #     data_send.append(l)  
+        # limit = 32 - len(data_send)
+        # for l in message:
+        #     if i < limit:
+        #         data_send.append(l)
+        #         if j == len(message)-1:
+        #             radio.write(data_send)
+        #             data_send = []
+        #     else:
+        #         limit = 33
+        #         radio.write(data_send)
+        #         data_send = []
+        #         i = 0
+        #     i += 1
+        #     j += 1
+
+        radio.write(data[1])
+
         return data[1]
 
