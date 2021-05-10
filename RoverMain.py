@@ -43,7 +43,7 @@ class roverMain():
 if __name__ == "__main__":
     roverMain = roverMain()
     while True:
-        time.sleep(.25)
+        time.sleep(.9)
         datos = roverMain.gatherData()
         roverMain.saveData(datos)
         # Check if function sendMessage works 
