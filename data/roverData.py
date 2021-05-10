@@ -98,7 +98,7 @@ class roverData():
         Z, A, B, C, D, E, F, G, H = data
         #message = "{};{};{};{};{};{};{};{}".format(A, B, C, D, E, F, G, H)     
         
-
+        test = "A".format(A)
 
         # i = 0
         # j = 0
@@ -123,7 +123,7 @@ class roverData():
         #     i += 1
         #     j += 1
 
-        radio.write(A)
+        radio.write(test)
         
         return None
 
