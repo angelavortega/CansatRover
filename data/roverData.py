@@ -107,5 +107,6 @@ class roverData():
             while len(data_send) < 32:
                 data_send.append(0)
             radio.write(data_send)
+            i += 1
         return message
 
