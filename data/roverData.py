@@ -95,8 +95,10 @@ class roverData():
         return [roll, pitch, yaw]
 
     def sendRadioData(self, data):
-        Z, A, B, C, D, E, F, G, H = data
-        message = "{};{};{};{};{};{};{};{}".format(A, B, C, D, E, F, G, H)     
+        #Z, A, B, C, D, E, F, G, H = data
+        #message = "{};{};{};{};{};{};{};{}".format(A, B, C, D, E, F, G, H)     
+        
+        """
         i = 0
         j = 0
         data_send = ['i']
@@ -119,5 +121,6 @@ class roverData():
                 i = 0
             i += 1
             j += 1
-        return message
+        """
+        return data[1]
 
