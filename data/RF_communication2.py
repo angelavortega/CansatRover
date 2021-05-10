@@ -27,8 +27,8 @@ while True:
     #message = list(input('Ingrese su mensaje'))
     iteracion = iteracion + 1
     message = list('Hello World {}'.format(iteracion))
-    while len(message) < 32:
-        message.append(0)
+    #while len(message) < 32:
+    #    message.append(0)
     print(message) 
     radio.write(message)
     time.sleep(2)
