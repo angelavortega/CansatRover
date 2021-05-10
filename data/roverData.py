@@ -109,11 +109,14 @@ class roverData():
         for l in message:
             if i < limit:
                 data_send.append(l)
-                if j == len(message)-1:
+                if j == len(message) - 1:
+                    while len(data_send) < 32:
+                        data_send.append(0)
                     radio.write(data_send)
                     data_send = []
             else:
                 limit = 33
+
                 radio.write(data_send)
                 data_send = []
                 i = 0
