@@ -103,8 +103,7 @@ class roverData():
         for val in data:
             data_send = [data_id[i]]
             for l in val:
-                data_send.append(l)    
-            data_send.append(';')       
+                data_send.append(l)      
             while len(data_send) < 32:
                 data_send.append(0)
             radio.write(data_send)
