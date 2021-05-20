@@ -1,5 +1,4 @@
 import time
-import datetime
 import csv  
 from data.roverData import roverData # Class in charge of reading sensor data (for more details go to the folder data and open roverData.py)
 from stages.launch import roverLaunch # Class in charge of launch phase
@@ -31,7 +30,7 @@ class roverMain():
         in_posx = sum(in_posx) / len(in_posx)
         in_posy = sum(in_posy) / len(in_posy)
         self.gps_pos(in_posx, in_posy)
-        self.last_time = datetime.datetime.now()
+        self.last_time = time.time()
 
     def gps_pos(self, x_lat, y_lat):
         if self.initial_pos: 
@@ -45,8 +44,8 @@ class roverMain():
         
     def gatherData(self):
         allData = [self.n]
-        actl_time = datetime.datetime.now() - self.last_time
-        allData.append(actl_time.total_seconds())
+        actl_time = time.time() - self.last_time
+        allData.append(actl_time)
         self.last_time = actl_time
         for value in self.roverData.climateData():
             allData.append(value)
