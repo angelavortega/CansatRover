@@ -1,4 +1,5 @@
-import serial, time # For GPS
+import serial
+import time # For GPS
 import math
 from data.sensors.bmp388 import * # Temperature, Altitude and Pressure
 from data.sensors.berryIMU import * # Acelerometer, Gyroscope and magnetometer
@@ -13,7 +14,6 @@ class roverData():
         self.airDensity = 1.2041 # kg/m^3
         self.gravity = 9.81 # m/s^2
         self.initial = True
-        self.initial_pos = True
         
     def climateData(self):
         """
@@ -22,9 +22,8 @@ class roverData():
         print ("Version     :", chip_version)
         """
         temperature, pressure, altitude = self.bmp388.get_temperature_and_pressure_and_altitude()
-        pressure = pressure / 100
         altitude = self.calcAltitude(pressure)
-        return [temperature, pressure, altitude]
+        return [temperature / 100, pressure / 100, altitude]
     
     def calcAltitude(self, pressure):
         if self.initial: 
@@ -61,13 +60,6 @@ class roverData():
         def convert_to_m(latitude, longitude):
             y = latitude * 111111.11
             x = longitude * math.cos(math.radians(latitude)) * 111111.11
-            if self.initial_pos: 
-                self.in_x = x
-                self.in_y = y
-                self.initial_pos = False 
-                return 0, 0
-            x = x - self.in_x
-            y = y - self.in_y
             return x, y
 
         while True:
