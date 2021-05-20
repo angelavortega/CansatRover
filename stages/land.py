@@ -13,6 +13,14 @@ class roverLand():
         self.servo2 = GPIO.PWM(22, 50)
         self.servo1.start(2.5)
         self.servo2.start(2.5)
+        self.last_Temperature = 0 
+        self.last_Pressure = 0
+        self.last_Altitude = 0
+        self.last_X_Coordinate = 0
+        self.last_Y_Coordinate = 0
+        self.last_Roll = 0
+        self.last_Pitch = 0
+        self.last_Yaw = 0
         pass
 
     def checkLanding(self):
@@ -29,10 +37,22 @@ class roverLand():
     
     def casatController(self, data):
         Index, Time, Temperature, Pressure, Altitude, X_Coordinate, Y_Coordinate, Roll, Pitch, Yaw = data
+
         #### Here goes control algorithm ####
+
+        """Example of how to use self.last_values
+        fall_velocity = (Altitud - self.last_Altitude) / Time
+        x_velocity = (X_Coordinate - self.last_X_Coordinate) / Time
+        """
         
-        #####################################
         duty_1 = 12
         duty_2 = 12
-        
+        #####################################
+
+        self.last_Altitude = Altitude
+        self.last_X_Coordinate = X_Coordinate
+        self.last_Y_Coordinate = Y_Coordinate
+        self.last_Roll = Roll
+        self.last_Pitch = Pitch
+        self.last_Yaw = Yaw
         self.servoControl(duty_1, duty_2)
