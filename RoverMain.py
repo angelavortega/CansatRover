@@ -1,17 +1,19 @@
 import time
+import datetime
 import csv  
-from data.roverData import roverData
-from stages.launch import roverLaunch
+from data.roverData import roverData # Class in charge of reading sensor data (for more details go to the folder data and open roverData.py)
+from stages.launch import roverLaunch # Class in charge of launch phase
 from stages.land import roverLand
 from stages.returnR import roverReturn
 
 
+# Creation of class roverMain which is going to have complet control over all stages
 class roverMain():
     
     def __init__(self):
         with open('data.csv', 'w') as f:
             writer = csv.writer(f)
-            row = ['Time', 'Temperature', 'Pressure', 'Altitude', \
+            row = ['Index', 'Time', 'Temperature', 'Pressure', 'Altitude', \
                     'X_Coordinate', 'Y_Coordinate', 'Roll', 'Pitch', 'Yaw']
             writer.writerow(row)     
         self.n = 0
@@ -29,6 +31,7 @@ class roverMain():
         in_posx = sum(in_posx) / len(in_posx)
         in_posy = sum(in_posy) / len(in_posy)
         self.gps_pos(in_posx, in_posy)
+        self.last_time = datetime.datetime.now()
 
     def gps_pos(self, x_lat, y_lat):
         if self.initial_pos: 
@@ -42,6 +45,9 @@ class roverMain():
         
     def gatherData(self):
         allData = [self.n]
+        actl_time = datetime.datetime.now() - self.last_time
+        allData.append(actl_time.total_seconds())
+        self.last_time = actl_time
         for value in self.roverData.climateData():
             allData.append(value)
         x, y = self.roverData.gpsPosition()

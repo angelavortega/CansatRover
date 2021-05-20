@@ -28,10 +28,7 @@ class roverLand():
         self.servo2.ChangeDutyCycle(float(duty_Cycle_2))
     
     def casatController(self, data):
-        """
-        The variable data comes with the next values
-        data = ['Time', 'Temperature', 'Pressure', 'Altitude', 'X_Coordinate', 'Y_Coordinate', 'Roll', 'Pitch', 'Yaw']
-        """
+        Index, Time, Temperature, Pressure, Altitude, X_Coordinate, Y_Coordinate, Roll, Pitch, Yaw = data
         #### Here goes control algorithm ####
         
         #####################################
