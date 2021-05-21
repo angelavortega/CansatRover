@@ -3,5 +3,6 @@ venv/*
 docs/*
 .vscode/*
 *.csv
+*/tests/
 
 **/__pycache__/
