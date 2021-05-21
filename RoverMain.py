@@ -1,5 +1,6 @@
 import time
 import csv  
+import os
 import json
 from data.roverData import roverData # Class in charge of reading sensor data (for more details go to the folder data and open roverData.py)
 from stages.launch import roverLaunch # Class in charge of launch phase
@@ -11,13 +12,10 @@ from stages.returnR import roverReturn
 class roverMain():
     
     def __init__(self):
-        json_path = 'data/csv_num.json'
-        with open(json_path, 'r') as f:
-            csv_num = json.load(f)
-        self.csv_path = 'data/tests/data_{}.csv'.format(csv_num['number']) 
-        csv_num['number'] = csv_num['number'] + 1
-        with open(json_path, 'w') as f:
-            json.dump(csv_num, f, indent=1)
+        tests_path = 'data/tests'
+        if not os.path.exists(tests_path): os.mkdir(tests_path)
+        number = len(os.listdir(tests_path))
+        self.csv_path = 'data/tests/data_{}.csv'.format(number) 
         with open(self.csv_path, 'w') as f:
             writer = csv.writer(f)
             row = ['Index', 'Time', 'Temperature', 'Pressure', 'Altitude', \
