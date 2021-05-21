@@ -281,7 +281,7 @@ class NRF24:
         payload = self.spidev.xfer2(txbuffer)
         del buf[:]
         buf.extend(payload[1:data_len + 1])
-        return data_len
+        return buf
 
     def flush_rx(self):
         return self.spidev.xfer2([NRF24.FLUSH_RX])[0]
@@ -531,10 +531,10 @@ class NRF24:
 
     def read(self, buf, buf_len=-1):
         # Fetch the payload
-        self.read_payload(buf, buf_len)
+        message = self.read_payload(buf, buf_len)
 
         # was this the last of the data available?
-        return self.read_register(NRF24.FIFO_STATUS) & _BV(NRF24.RX_EMPTY)
+        return message #self.read_register(NRF24.FIFO_STATUS) & _BV(NRF24.RX_EMPTY)
 
     def whatHappened(self):
         # Read the status & reset the status in one easy call

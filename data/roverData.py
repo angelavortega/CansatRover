@@ -100,4 +100,26 @@ class roverData():
                 data_send.append(0)
             radio.write(data_send)
             i += 1
+    
+    def rcvRadioData(self):
+        ackPL = [1]
+        while not radio.available(0):
+            time.sleep(1 / 100)
+
+        receivedMessage = []
+        receivedMessage = radio.read(receivedMessage, radio.getDynamicPayloadSize())
+        print("Received: {}".format(receivedMessage))
+
+        print("Translating the receivedMessage into unicode characters...")
+        string = ""
+        for n in receivedMessage:
+            # Decode into standard unicode set
+            if (n >= 32 and n <= 126):
+                string += chr(n)
+        # print(string)
+        return string
+        #radio.writeAckPayload(1, ackPL, len(ackPL))
+        #print("Loaded payload reply of {}".format(ackPL))    
+
+
 

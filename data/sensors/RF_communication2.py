@@ -19,6 +19,7 @@ radio.enableDynamicPayloads()
 radio.enableAckPayload()
 
 radio.openWritingPipe(pipes[0])
+radio.openReadingPipe(1, pipes[1])
 radio.printDetails()
 
 """
