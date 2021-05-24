@@ -7,6 +7,8 @@ from stages.launch import roverLaunch # Class in charge of launch phase
 from stages.land import roverLand
 from stages.returnR import roverReturn
 
+time_frequecy = .25 # The time at which the program will be running in seconds
+
 
 # Creation of class roverMain which is going to have complet control over all stages
 class roverMain():
@@ -52,7 +54,7 @@ class roverMain():
         allData = [self.n]
         actl_time = time.time() - self.last_time
         allData.append(actl_time)
-        self.last_time = actl_time
+        self.last_time = time.time()
         for value in self.roverData.climateData():
             allData.append(value)
         x, y = self.roverData.gpsPosition()
@@ -82,7 +84,6 @@ class roverMain():
 
 if __name__ == "__main__":
     roverMain = roverMain()
-    time_frequecy = .25
 
     while True:
         time.sleep(time_frequecy)
