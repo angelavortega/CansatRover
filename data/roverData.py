@@ -89,7 +89,7 @@ class roverData():
 
     def sendRadioData(self, data):
         Y, Z, A, B, C, D, E, F, G, H = data
-        data = [str(A), str(B), str(C), str(D), str(E),\
+        data = [str(A), str(B / 100), str(C), str(D), str(E),\
             str(F), str(G), str(H)]
         data_id = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
         i = 0
