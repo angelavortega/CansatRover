@@ -21,7 +21,11 @@ class roverLand():
         self.last_Roll = 0
         self.last_Pitch = 0
         self.last_Yaw = 0
-        pass
+        self.servoControl(2, 12)
+        time.sleep(.5)
+        self.servoControl(12, 2)
+        time.sleep(.5)
+        self.servoControl(7, 7)
 
     def checkLanding(self):
         "This function checks if the landing is done"
@@ -33,6 +37,8 @@ class roverLand():
         # Y un 2 a un 0°
 
         self.servo1.ChangeDutyCycle(float(duty_Cycle_1))
+        # TODO avoid the time sleep and do it simultainiously with all the code
+        time.sleep(.5)
         self.servo2.ChangeDutyCycle(float(duty_Cycle_2))
     
     def casatController(self, data):
