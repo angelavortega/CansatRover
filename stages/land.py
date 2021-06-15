@@ -53,6 +53,7 @@ class roverLand():
         
         duty_1 = 12
         duty_2 = 12
+        self.servoControl(duty_1, duty_2)
         #####################################
 
         self.last_Altitude = Altitude
@@ -61,4 +62,3 @@ class roverLand():
         self.last_Roll = Roll
         self.last_Pitch = Pitch
         self.last_Yaw = Yaw
-        self.servoControl(duty_1, duty_2)
